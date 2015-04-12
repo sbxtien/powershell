@@ -85,5 +85,4 @@ Remove-PSSnapin SqlServerProviderSnapin100
 Clear-Host
 Get-PSSnapin | Select-Object Name
 Get-PSProvider
-
 ##

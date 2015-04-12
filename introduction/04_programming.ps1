@@ -16,10 +16,6 @@ else
 }
 
 
-
-
-
-  
 # if elseif
 if ($var -eq 1)
 {
@@ -41,14 +37,6 @@ else
 }
 
 
-
-
-
-
-
-
-
-
 # Switch statement for multiple conditions
 Clear-Host
 $var = 42                   # Also test with 43 and 49
@@ -59,7 +47,6 @@ switch  ($var)
   43 {"Forty Three"}
   default {"default"}
 }
-
 
 
 # Will match all lines that match
@@ -73,10 +60,6 @@ switch  ($var)
 }
 
 
-
-
-
-
 # To stop processing once a block is found use break
 Clear-Host
 $var = 42
@@ -86,11 +69,6 @@ switch  ($var)
   "42" {"Forty Two String"}
   default {"default"}
 }
-
-
-
-
-
 
 
 # Switch works with collections, looping and executing for each match
@@ -104,16 +82,6 @@ switch (3,1,2,42)
 }
 
 
-
-
-
-
-
-
-
-
-
-
 # String compares are case insensitive by default
 Clear-Host
 switch ("Pluralsight")
@@ -122,7 +90,6 @@ switch ("Pluralsight")
   "PLURALSIGHT" {"uppercase"}
   "Pluralsight" {"mixedcase"}
 }
-
 
 
 # Use the -casesenstive switch to make it so
@@ -135,13 +102,6 @@ switch -casesensitive ("Pluralsight")
 }
 
 
-
-
-
-
-
-
-
 # Supports wildcards
 Clear-Host
 switch -Wildcard ("Pluralsight")
@@ -152,44 +112,7 @@ switch -Wildcard ("Pluralsight")
 }
 
 # Note it will also support regex matches
-
 ##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -206,7 +129,6 @@ while ($i -le 5)
   "`$i = $i"
   $i = $i + 1
 }
-
 
 
 # won't execute if condition is already true
@@ -376,47 +298,7 @@ Clear-Host
   }
   "some more stuff here that will never run"
 }
-
-
 ##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -430,7 +312,6 @@ for ($f = 0; $f -le 5; $f++)
 {
   "`$f = $f"
 }
-
 
 
 # (note, to put multiple commands on a single line use the ; )
@@ -497,11 +378,6 @@ $value = { return; 42; Write-Host "Pluralsight is cool"}
 &$value
 
 
-
-
-
-
-
 # Parameters 1: Using the args collection
 $qa = {
   $question = $args[0]
@@ -510,7 +386,6 @@ $qa = {
 }
 
 &$qa "What is cool?" "Powershell!"
-
 
 
 # Parameters 2: a more readable method - using the param block
@@ -552,9 +427,6 @@ $qa = {
 &$qa "Question?" 
 
 
-
-
-
 # You can use explicit typing on parameters
 Clear-Host
 $math = {
@@ -565,10 +437,6 @@ $math = {
 &$math 3 11
 
 &$math 3 "x"
-
-
-
-
 
 
 # Pipeline enabling a block
@@ -619,41 +487,7 @@ Clear-Host
 Get-ChildItem | &$onlyCoolFiles "Here is my cool header text"
 
 Get-ChildItem | &$onlyCoolFiles "These are as cool as bowties"
-
 ##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -705,7 +539,6 @@ $var = 42
 Write-Host "Outside block: $var"
 
 
-
 # You can also specify scope 
 # making it global allows it to be used inside the script, and won't be copied
 Clear-Host
@@ -728,45 +561,11 @@ $private:unmentionables = 42
 Write-Host "Outside block: $private:unmentionables"
 
 
-
 # Variables declared inside a block are available only in it (local scope)
 Clear-Host
 & { $localboy = 42; Write-Host "Inside block: $localboy" }
 Write-Host "Outside block: $localboy" # Will be null
-
-
 ##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -816,7 +615,6 @@ Get-ChildItem | Get-CoolFiles
 # Above works but ties it to PS1
 
 
-
 # Filters can be built to remove unwantd files
 filter Show-PS1Files 
 {
@@ -861,8 +659,6 @@ Get-ChildItem | Show-TxtFiles | List-FileNames
 Clear-Host
 Get-ChildItem | Show-PS1Files | List-FileNames
 Get-ChildItem | Show-TxtFiles | List-FileNames
-
-
 
 
 # Having your function output to the pipeline
@@ -915,13 +711,7 @@ Get-ChildName
 Get-ChildName -verbose
 Get-ChildName -debug
 Get-ChildName -verbose -debug
-
-
 ##
-
-
-
-
 
 
 #-----------------------------------------------------------------------------#
@@ -1050,16 +840,7 @@ function divver($enum,$denom)
     continue
   }
 }
-
-
-
-
-
 ##
-
-
-
-
 
 
 
@@ -1121,35 +902,6 @@ Get-Help Get-ChildName
 
 Clear-Host
 Get-Help Get-ChildName -full
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1278,6 +1030,4 @@ foreach ($course in $myCoursesXml.Courses.Course)
 {
   Write-Host "The course" $course.Name "is a Level" $course.Level "course."
 }
-
-
 ##
